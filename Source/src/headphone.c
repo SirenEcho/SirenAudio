@@ -65,7 +65,8 @@ void WavePlayBack(uint32_t AudioFreq)
   WaveRecorderBeginSampling ();
 
   /* Initialize wave player (Codec, DMA, I2C) */
-  WavePlayerInit(SAMPLE_RATE);
+	
+  WavePlayerInit(SAMPLE_RATE); //16000 als Aufnahmerate sollte so fürs Erste eingestellt bleieben
   
   /* Initialize the buffer filling function */
   fill_init ();
