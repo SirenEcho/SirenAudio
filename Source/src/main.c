@@ -84,7 +84,7 @@ void SysTick_Handler(void)
             LED_periodic_controller ();
 }
 
-void Aufnahmen_gleich(void){
+void Aufnahmen_gleich(void){ //ausgabe eines Signals (blinkende LED, theoretisch SMS denkbar), wenn beide Arrays gleich sind
 	int i;
 	STM_EVAL_LEDOn(LED3);
 	
@@ -94,8 +94,8 @@ void Aufnahmen_gleich(void){
 
 void EXTI0_IRQHandler(void)
 {
-
   /* Checks whether the User Button EXTI line is asserted*/
+	// Logik des Programms
   if (EXTI_GetITStatus(EXTI_Line0) != RESET) 
   { 
       static uint32_t last_button_time;     // used to debounce user button
@@ -106,6 +106,10 @@ void EXTI0_IRQHandler(void)
 						// array muss zurückgegeben und gespeichert werden.
               LED_Toggle = (LED_Toggle & ~LED_CTRL_GREEN_TOGGLE) | LED_CTRL_GREEN_ON;
 							LED_Toggle = (LED_Toggle & ~LED_CTRL_BLUE_TOGGLE) | LED_CTRL_BLUE_OFF;
+							//Waverecorder 1. Aufnahme
+						// return muss ein array
+						//Fourier-Transformation
+						//Übergabe des Arrays an ein Array in Main.c
 					}
           else{
 						//while(prüfung = false && USER BUTTON != RESET){ Wird der User-Button gedrückt springt er auch raus
