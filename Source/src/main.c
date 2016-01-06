@@ -91,6 +91,8 @@ void Aufnahmen_gleich(void){ //ausgabe eines Signals (blinkende LED, theoretisch
 	for ( i = 0; i<25000000; i++);
 	STM_EVAL_LEDOff(LED3);
 }
+//Array zum Speichern des Buffers
+uint16_t audio_array[540000]; 
 
 void EXTI0_IRQHandler(void)
 {
@@ -108,6 +110,7 @@ void EXTI0_IRQHandler(void)
 							LED_Toggle = (LED_Toggle & ~LED_CTRL_BLUE_TOGGLE) | LED_CTRL_BLUE_OFF;
 							//Waverecorder 1. Aufnahme
 						// return muss ein array
+						LED_Toggle = (LED_Toggle & ~LED_CTRL_RED_TOGGLE) | LED_CTRL_RED_ON;
 						//Fourier-Transformation
 						//Übergabe des Arrays an ein Array in Main.c
 					}
@@ -116,6 +119,7 @@ void EXTI0_IRQHandler(void)
 						//User wartet auf die Erkennung des Geräusches
 						//wird das Geräusch erkannt, so wird ein optisches Signal innerhalb einer anderen Funktion
 						//gerufen
+						  LED_Toggle = (LED_Toggle & ~LED_CTRL_RED_TOGGLE) | LED_CTRL_RED_OFF;
               LED_Toggle = (LED_Toggle & ~LED_CTRL_BLUE_TOGGLE) | LED_CTRL_BLUE_ON;
 							LED_Toggle = (LED_Toggle & ~LED_CTRL_GREEN_TOGGLE) | LED_CTRL_GREEN_OFF;
 							
