@@ -102,7 +102,7 @@ void PendSV_Handler(void)
 {
 }
 
-static void LED_periodic_controller (void)
+/*static void LED_periodic_controller (void)
 {
     switch (LED_Toggle & LED_CTRL_RED_TOGGLE) {
         case LED_CTRL_RED_ON:
@@ -152,15 +152,15 @@ static void LED_periodic_controller (void)
             break;
     }
 }
-
-volatile uint32_t msec_counter;
+*/
+/*volatile uint32_t msec_counter;
 
 /**
   * @brief  This function handles SysTick Handler.
   * @param  None
   * @retval None
   */
-void SysTick_Handler(void)
+/*void SysTick_Handler(void)
 {
     msec_counter++;
 
@@ -170,7 +170,7 @@ void SysTick_Handler(void)
         !(user_mode & 2) && !(msec_counter & 0x7f))
             LED_periodic_controller ();
 }
-
+*/
 
 /******************************************************************************/
 /*                 STM32F4xx Peripherals Interrupt Handlers                   */
@@ -200,25 +200,30 @@ void EXTI1_IRQHandler(void)
   * @param  None
   * @retval None
   */
-void EXTI0_IRQHandler(void)
+
+/*void EXTI0_IRQHandler(void)
 {
-  /* Checks whether the User Button EXTI line is asserted*/
+  ///* Checks whether the User Button EXTI line is asserted
   if (EXTI_GetITStatus(EXTI_Line0) != RESET) 
   { 
       static uint32_t last_button_time;     // used to debounce user button
 
       if (last_button_time + 200 < msec_counter) {
-          if (++user_mode & 1)      // bit 0 of the user mode lights the blue LED
+          if (++user_mode & 1)  {    // bit 0 of the user mode lights the blue LED
+              LED_Toggle = (LED_Toggle & ~LED_CTRL_GREEN_TOGGLE) | LED_CTRL_GREEN_ON;
+						LED_Toggle = (LED_Toggle & ~LED_CTRL_BLUE_TOGGLE) | LED_CTRL_BLUE_OFF;
+					}
+          else{
               LED_Toggle = (LED_Toggle & ~LED_CTRL_BLUE_TOGGLE) | LED_CTRL_BLUE_ON;
-          else
-              LED_Toggle = (LED_Toggle & ~LED_CTRL_BLUE_TOGGLE) | LED_CTRL_BLUE_OFF;
-
+						LED_Toggle = (LED_Toggle & ~LED_CTRL_GREEN_TOGGLE) | LED_CTRL_GREEN_OFF;
+					}
           last_button_time = msec_counter;
       }
   } 
-  /* Clears the EXTI's line pending bit.*/ 
+  ///* Clears the EXTI's line pending bit. 
   EXTI_ClearITPendingBit(EXTI_Line0);
 }
+*/
 
 /**
   * @brief  This function handles PPP interrupt request.
