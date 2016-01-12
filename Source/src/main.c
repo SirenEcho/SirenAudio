@@ -14,12 +14,13 @@
  #include "stm32f4xx_gpio.h"
  #include "misc.h"
  #include "stm32f4xx.h"
- 
+ #include "headphone.h"
 RCC_ClocksTypeDef RCC_Clocks;
 extern volatile uint8_t LED_Toggle;
 volatile int user_mode;
 volatile int msTicks;
 volatile uint32_t msec_counter;
+
 
 static void LED_periodic_controller (void)
 {
@@ -85,6 +86,7 @@ void SysTick_Handler(void)
 }
 
 void Aufnahmen_gleich(void){ //ausgabe eines Signals (blinkende LED, theoretisch SMS denkbar), wenn beide Arrays gleich sind
+	
 	int i;
 	STM_EVAL_LEDOn(LED3);
 	
@@ -94,6 +96,15 @@ void Aufnahmen_gleich(void){ //ausgabe eines Signals (blinkende LED, theoretisch
 //Array zum Speichern des Buffers
 uint16_t audio_array[540000]; 
 
+/*void StartRec(){
+	 
+	//WaveRecorderBeginSampling ();
+	//WavePlayerInit(16000);
+	
+	WavePlayBack(I2S_AudioFreq_48k);
+	//return array;
+}
+*/
 void EXTI0_IRQHandler(void)
 {
   /* Checks whether the User Button EXTI line is asserted*/
@@ -108,6 +119,8 @@ void EXTI0_IRQHandler(void)
 						// array muss zurückgegeben und gespeichert werden.
               LED_Toggle = (LED_Toggle & ~LED_CTRL_GREEN_TOGGLE) | LED_CTRL_GREEN_ON;
 							LED_Toggle = (LED_Toggle & ~LED_CTRL_BLUE_TOGGLE) | LED_CTRL_BLUE_OFF;
+							//
+						//StartRec();
 							//Waverecorder 1. Aufnahme
 						// return muss ein array
 						LED_Toggle = (LED_Toggle & ~LED_CTRL_RED_TOGGLE) | LED_CTRL_RED_ON;
@@ -137,12 +150,13 @@ void EXTI0_IRQHandler(void)
 
 int main(void)
 { 
+	
   /* Initialize LEDs */
   STM_EVAL_LEDInit(LED3);
   STM_EVAL_LEDInit(LED4);
   STM_EVAL_LEDInit(LED5);
   STM_EVAL_LEDInit(LED6);
-
+	
   /* SysTick end of count event each 1ms */
   RCC_GetClocksFreq(&RCC_Clocks);
   SysTick_Config(RCC_Clocks.HCLK_Frequency / 1000);
@@ -151,8 +165,9 @@ int main(void)
   STM_EVAL_PBInit(BUTTON_USER, BUTTON_MODE_EXTI);
 	
 	//Warte auf interrupt
-	
+	WavePlayBack(I2S_AudioFreq_48k);
 	while(1){} 
 		
 		
+
 }
