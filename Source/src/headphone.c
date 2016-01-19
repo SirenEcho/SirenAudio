@@ -61,6 +61,7 @@ void WaveRecorderCallback (int16_t *buffer, int num_samples)
 
 void WavePlayBack(uint32_t AudioFreq)
 { 
+	volatile int i = 0;
   /* First, we start sampling internal microphone */
   WaveRecorderBeginSampling ();
 
@@ -71,7 +72,7 @@ void WavePlayBack(uint32_t AudioFreq)
   /* Initialize the buffer filling function */
   fill_init ();
 
-  /* Let the microphone data buffer get 2/3 full (which is 2 playback buffers) */
+  /* Let the microphone data buffer get 2/3 full (which is 2 playback buffers) */								//Noch auszuprobieren ... *hust*
   while (mic_head < MIC_BUFFER_SAMPLES * 2 / 3);
 
   /* Fill the second playback buffer (the first will just be zeros to start) */
@@ -91,7 +92,8 @@ void WavePlayBack(uint32_t AudioFreq)
    * that we are doing (e.g., playing tones, echoing the mic, being a nervous dog, etc.)
    */
 
-  while (1) {
+ while (i < 10) {
+		i++;
     while (next_buff == 1);
     fill_buffer (buff0, OUT_BUFFER_SAMPLES);
     while (next_buff == 0);

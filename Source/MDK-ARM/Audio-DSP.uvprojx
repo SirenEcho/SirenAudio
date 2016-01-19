@@ -373,7 +373,7 @@
               <MiscControls></MiscControls>
               <Define>USE_STDPERIPH_DRIVER, STM32F4XX</Define>
               <Undefine></Undefine>
-              <IncludePath>..\inc;..\..\Libraries\CMSIS\ST\STM32F4xx\Include;..\..\Libraries\CMSIS\Include;..\..\Utilities\Third_Party\fat_fs\inc;..\..\Libraries\STM32F4xx_StdPeriph_Driver\inc;..\..\Libraries\STM32_USB_HOST_Library\Core\inc;..\..\Libraries\STM32_USB_HOST_Library\Class\MSC\inc;..\..\Libraries\STM32_USB_OTG_Driver\inc;..\..\Utilities\STM32F4-Discovery</IncludePath>
+              <IncludePath>..\inc;..\..\Libraries\CMSIS\ST\STM32F4xx\Include;..\..\Libraries\CMSIS\Include;..\..\Utilities\Third_Party\fat_fs\inc;..\..\Libraries\STM32F4xx_StdPeriph_Driver\inc;..\..\Libraries\STM32_USB_HOST_Library\Core\inc;..\..\Libraries\STM32_USB_HOST_Library\Class\MSC\inc;..\..\Libraries\STM32_USB_OTG_Driver\inc;..\..\Utilities\STM32F4-Discovery;..\MDK-ARM;..\..\Libraries\ub_lib;..\..\Libraries\ub_lib\fatfs;..\..\Libraries\ub_lib\fatfs\lo_level_ub;..\..\Libraries\ub_lib\usb_msc_host_lolevel</IncludePath>
             </VariousControls>
           </Cads>
           <Aads>
@@ -540,6 +540,111 @@
               <FileName>arm_cortexM4lf_math.lib</FileName>
               <FileType>4</FileType>
               <FilePath>..\..\Libraries\CMSIS\Lib\ARM\arm_cortexM4lf_math.lib</FilePath>
+            </File>
+          </Files>
+        </Group>
+        <Group>
+          <GroupName>Usblib</GroupName>
+          <Files>
+            <File>
+              <FileName>stm32_ub_fatfs.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\..\Libraries\ub_lib\stm32_ub_fatfs.c</FilePath>
+            </File>
+            <File>
+              <FileName>stm32_ub_usb_msc_host.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\..\Libraries\ub_lib\stm32_ub_usb_msc_host.c</FilePath>
+            </File>
+            <File>
+              <FileName>usb_bsp.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\..\Libraries\ub_lib\usb_msc_host_lolevel\usb_bsp.c</FilePath>
+            </File>
+            <File>
+              <FileName>usb_core.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\..\Libraries\ub_lib\usb_msc_host_lolevel\usb_core.c</FilePath>
+            </File>
+            <File>
+              <FileName>usb_hcd.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\..\Libraries\ub_lib\usb_msc_host_lolevel\usb_hcd.c</FilePath>
+            </File>
+            <File>
+              <FileName>usb_hcd_int.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\..\Libraries\ub_lib\usb_msc_host_lolevel\usb_hcd_int.c</FilePath>
+            </File>
+            <File>
+              <FileName>usbh_core.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\..\Libraries\ub_lib\usb_msc_host_lolevel\usbh_core.c</FilePath>
+            </File>
+            <File>
+              <FileName>usbh_hcs.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\..\Libraries\ub_lib\usb_msc_host_lolevel\usbh_hcs.c</FilePath>
+            </File>
+            <File>
+              <FileName>usbh_ioreq.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\..\Libraries\ub_lib\usb_msc_host_lolevel\usbh_ioreq.c</FilePath>
+            </File>
+            <File>
+              <FileName>usbh_msc_bot.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\..\Libraries\ub_lib\usb_msc_host_lolevel\usbh_msc_bot.c</FilePath>
+            </File>
+            <File>
+              <FileName>usbh_msc_core.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\..\Libraries\ub_lib\usb_msc_host_lolevel\usbh_msc_core.c</FilePath>
+            </File>
+            <File>
+              <FileName>usbh_msc_scsi.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\..\Libraries\ub_lib\usb_msc_host_lolevel\usbh_msc_scsi.c</FilePath>
+            </File>
+            <File>
+              <FileName>usbh_stdreq.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\..\Libraries\ub_lib\usb_msc_host_lolevel\usbh_stdreq.c</FilePath>
+            </File>
+            <File>
+              <FileName>usbh_usr.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\..\Libraries\ub_lib\usb_msc_host_lolevel\usbh_usr.c</FilePath>
+            </File>
+          </Files>
+        </Group>
+        <Group>
+          <GroupName>Fatfs</GroupName>
+          <Files>
+            <File>
+              <FileName>diskio.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\..\Libraries\ub_lib\fatfs\diskio.c</FilePath>
+            </File>
+            <File>
+              <FileName>ff.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\..\Libraries\ub_lib\fatfs\ff.c</FilePath>
+            </File>
+            <File>
+              <FileName>stm32_ub_atadrive.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\..\Libraries\ub_lib\fatfs\lo_level_ub\stm32_ub_atadrive.c</FilePath>
+            </File>
+            <File>
+              <FileName>stm32_ub_sdcard.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\..\Libraries\ub_lib\fatfs\lo_level_ub\stm32_ub_sdcard.c</FilePath>
+            </File>
+            <File>
+              <FileName>stm32_ub_usbdisk.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\..\Libraries\ub_lib\fatfs\lo_level_ub\stm32_ub_usbdisk.c</FilePath>
             </File>
           </Files>
         </Group>
